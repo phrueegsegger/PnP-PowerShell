@@ -64,7 +64,13 @@ namespace SharePointPnP.PowerShell.Commands.Base
                 ContextCache.Add(context);
             }
             Context = context;
+            context.ExecutingWebRequest += Ctx_ExecutingWebRequest;
             return context;
+        }
+        private static void Ctx_ExecutingWebRequest(object sender, WebRequestEventArgs e)
+        {
+            e.WebRequestExecutor.WebRequest.Headers.Add("X-FORMS_BASED_AUTH_ACCEPTED", "f");
+            e.WebRequestExecutor.WebRequest.ServerCertificateValidationCallback += (o, certificate, chain, errors) => true;
         }
 
         internal static ClientContext GetCachedContext(string url)

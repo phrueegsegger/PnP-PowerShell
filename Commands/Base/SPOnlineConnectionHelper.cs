@@ -183,16 +183,19 @@ namespace SharePointPnP.PowerShell.Commands.Base
                     }
                     catch (ClientRequestException)
                     {
+                        context.ExecutingWebRequest += Ctx_ExecutingWebRequest;
                         context.Credentials = new NetworkCredential(credentials.UserName, credentials.Password);
                     }
                     catch (ServerException)
                     {
+                        context.ExecutingWebRequest += Ctx_ExecutingWebRequest;
                         context.Credentials = new NetworkCredential(credentials.UserName, credentials.Password);
                     }
                 }
                 catch (ArgumentException)
                 {
                     // OnPrem?
+                    context.ExecutingWebRequest += Ctx_ExecutingWebRequest;
                     context.Credentials = new NetworkCredential(credentials.UserName, credentials.Password);
                     try
                     {
@@ -213,6 +216,7 @@ namespace SharePointPnP.PowerShell.Commands.Base
             {
                 if (credentials != null)
                 {
+                    context.ExecutingWebRequest += Ctx_ExecutingWebRequest;
                     context.Credentials = new NetworkCredential(credentials.UserName, credentials.Password);
                 }
             }
@@ -376,5 +380,10 @@ namespace SharePointPnP.PowerShell.Commands.Base
                 return (result);
             },
             true);
+        private static void Ctx_ExecutingWebRequest(object sender, WebRequestEventArgs e)
+        {
+            e.WebRequestExecutor.WebRequest.Headers.Add("X-FORMS_BASED_AUTH_ACCEPTED", "f");
+            e.WebRequestExecutor.WebRequest.ServerCertificateValidationCallback += (o, certificate, chain, errors) => true;
+        }
     }
 }
