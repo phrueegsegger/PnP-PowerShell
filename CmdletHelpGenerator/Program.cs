@@ -437,11 +437,13 @@ namespace SharePointPnP.PowerShell.CmdletHelpGenerator
                     foreach (var exampleAttr in examples.OrderBy(e => e.SortOrder))
                     {
                         var example = new XElement(command + "example");
-                        var title = string.Format("------------------EXAMPLE {0}---------------------", exampleCount);
+                        var title = $"------------------EXAMPLE {exampleCount}---------------------";
                         example.Add(new XElement(maml + "title", title));
                         example.Add(new XElement(maml + "introduction", new XElement(maml + "para", exampleAttr.Introduction)));
                         example.Add(new XElement(dev + "code", exampleAttr.Code));
-                        example.Add(new XElement(maml + "remarks", new XElement(maml + "para", exampleAttr.Remarks)));
+                        var remarksElement = new XElement(maml + "remarks", new XElement(maml + "para", exampleAttr.Remarks));
+                        remarksElement.Add(new XElement(maml + "para",""));
+                        example.Add(remarksElement);
                         example.Add(new XElement(command + "commandLines",
                             new XElement(command + "commandLine",
                                 new XElement(command + "commandText"))));
@@ -527,15 +529,15 @@ namespace SharePointPnP.PowerShell.CmdletHelpGenerator
             var psd1Path = $"{new FileInfo(inFile).Directory}\\ModuleFiles\\SharePointPnPPowerShell{spVersion}.psd1";
             var cmdletsToExportString = string.Join(",", cmdletsToExport.Select(x => "'" + x + "'"));
             var aliasesToExportString = string.Join(",", aliasesToExport.Select(x => "'" + x + "'"));
-            WriteModuleManifest(psd1Path, spVersion, cmdletsToExportString, aliasesToExportString);
+            WriteModuleManifest(psd1Path, spVersion, cmdletsToExportString, aliasesToExportString, assembly);
         }
 
-        private static void WriteModuleManifest(string path, string version, string cmdletsToExport, string aliasesToExport)
+        private static void WriteModuleManifest(string path, string version, string cmdletsToExport, string aliasesToExport, Assembly assembly)
         {
             var manifest = $@"@{{
     ModuleToProcess = 'SharePointPnPPowerShell{version}.psm1'
     NestedModules   = 'SharePointPnP.PowerShell.{version}.Commands.dll'
-    ModuleVersion = '2.9.1611.0'
+    ModuleVersion = '{assembly.GetName().Version}'
     Description = 'SharePoint Patterns and Practices PowerShell Cmdlets for SharePoint {version}'
     GUID = '8f1147be-a8e4-4bd2-a705-841d5334edc0'
     Author = 'SharePoint Patterns and Practices'

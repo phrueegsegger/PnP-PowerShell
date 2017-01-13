@@ -49,7 +49,7 @@ Cmdlet|Description
 ##Content Types
 Cmdlet|Description
 :-----|:----------
-**[Remove&#8209;PnPContentType](RemovePnPContentType.md)** |Removes a content type
+**[Remove&#8209;PnPContentType](RemovePnPContentType.md)** |Removes a content type from a web
 **[Get&#8209;PnPContentType](GetPnPContentType.md)** |Retrieves a content type
 **[Add&#8209;PnPContentType](AddPnPContentType.md)** |Adds a new content type
 **[Remove&#8209;PnPContentTypeFromList](RemovePnPContentTypeFromList.md)** |Removes a content type from a list
@@ -89,14 +89,19 @@ Cmdlet|Description
 ##Files and Folders
 Cmdlet|Description
 :-----|:----------
+**[Copy&#8209;PnPFile](CopyPnPFile.md)** |Copies a file to a different location
+**[Move&#8209;PnPFile](MovePnPFile.md)** |Moves a file to a different location
+**[Rename&#8209;PnPFile](RenamePnPFile.md)** |Renames a file in its current location
 **[Remove&#8209;PnPFile](RemovePnPFile.md)** |Removes a file.
 **[Get&#8209;PnPFile](GetPnPFile.md)** |Downloads a file.
 **[Find&#8209;PnPFile](FindPnPFile.md)** |Finds a file in the virtual file system of the web.
 **[Add&#8209;PnPFile](AddPnPFile.md)** |Uploads a file to Web
 **[Set&#8209;PnPFileCheckedIn](SetPnPFileCheckedIn.md)** |Checks in a file
 **[Set&#8209;PnPFileCheckedOut](SetPnPFileCheckedOut.md)** |Checks out a file
+**[Move&#8209;PnPFolder](MovePnPFolder.md)** |Move a folder to another location in the current web
+**[Rename&#8209;PnPFolder](RenamePnPFolder.md)** |Renames a folder
 **[Get&#8209;PnPFolder](GetPnPFolder.md)** |Return a folder object
-**[Ensure&#8209;PnPFolder](EnsurePnPFolder.md)** |Returns a folder given a site relative path, and will create it if it does not exist.
+**[Ensure&#8209;PnPFolder](EnsurePnPFolder.md)** |Returns a folder from a given site relative path, and will create it if it does not exist.
 **[Add&#8209;PnPFolder](AddPnPFolder.md)** |Creates a folder within a parent folder
 **[Remove&#8209;PnPFolder](RemovePnPFolder.md)** |Deletes a folder within a parent folder
 **[Get&#8209;PnPFolderItem](GetPnPFolderItem.md)** |List content in folder
@@ -130,6 +135,7 @@ Cmdlet|Description
 **[Get&#8209;PnPUnifiedGroup](GetPnPUnifiedGroup.md)** |Gets one Office 365 Group (aka Unified Group) or a list of Office 365 Groups
 **[New&#8209;PnPUnifiedGroup](NewPnPUnifiedGroup.md)** |Creates a new Office 365 Group (aka Unified Group)
 **[Remove&#8209;PnPUnifiedGroup](RemovePnPUnifiedGroup.md)** |Removes one Office 365 Group (aka Unified Group) or a list of Office 365 Groups
+**[Set&#8209;PnPUnifiedGroup](SetPnPUnifiedGroup.md)** |Sets Office 365 Group (aka Unified Group) properties
 ##Provisioning
 Cmdlet|Description
 :-----|:----------
@@ -147,8 +153,13 @@ Cmdlet|Description
 ##Publishing
 Cmdlet|Description
 :-----|:----------
+**[Set&#8209;PnPAvailablePageLayouts](SetPnPAvailablePageLayouts.md)** |Sets the available page layouts for the current site
+**[Set&#8209;PnPDefaultPageLayout](SetPnPDefaultPageLayout.md)** |Sets a specific page layout to be the default page layout for a publishing site
 **[Add&#8209;PnPHtmlPublishingPageLayout](AddPnPHtmlPublishingPageLayout.md)** |Adds a HTML based publishing page layout
 **[Add&#8209;PnPMasterPage](AddPnPMasterPage.md)** |Adds a Masterpage
+**[Remove&#8209;PnPPublishingImageRendition](RemovePnPPublishingImageRendition.md)** |Removes an existing image rendition
+**[Get&#8209;PnPPublishingImageRendition](GetPnPPublishingImageRendition.md)** |Returns all image renditions or if Identity is specified a specific one
+**[Add&#8209;PnPPublishingImageRendition](AddPnPPublishingImageRendition.md)** |Adds an Image Rendition if the Name of the Image Rendition does not already exist. This prevents creating two Image Renditions that share the same name.
 **[Add&#8209;PnPPublishingPage](AddPnPPublishingPage.md)** |Adds a publishing page
 **[Add&#8209;PnPPublishingPageLayout](AddPnPPublishingPageLayout.md)** |Adds a publishing page layout
 **[Remove&#8209;PnPWikiPage](RemovePnPWikiPage.md)** |Removes a wiki page
@@ -161,6 +172,14 @@ Cmdlet|Description
 **[Set&#8209;PnPSearchConfiguration](SetPnPSearchConfiguration.md)** |Sets the search configuration
 **[Get&#8209;PnPSearchConfiguration](GetPnPSearchConfiguration.md)** |Returns the search configuration
 **[Get&#8209;PnPSiteSearchQueryResults](GetPnPSiteSearchQueryResults.md)** |Executes a search query to retrieve indexed site collections
+##SharePoint Recycle Bin
+Cmdlet|Description
+:-----|:----------
+**[Restore&#8209;PnpRecycleBinItem](RestorePnpRecycleBinItem.md)** |Restores the provided recycle bin item to its original location
+**[Clear&#8209;PnpRecycleBinItem](ClearPnpRecycleBinItem.md)** |Permanently deletes all or a specific recycle bin item
+**[Move&#8209;PnpRecycleBinItem](MovePnpRecycleBinItem.md)** |Moves all items or a specific item in the first stage recycle bin of the current site collection to the second stage recycle bin
+**[Get&#8209;PnPRecycleBinItem](GetPnPRecycleBinItem.md)** |Returns the items in the recycle bin from the context
+**[Get&#8209;PnPTenantRecycleBinItem](GetPnPTenantRecycleBinItem.md)** |Returns the items in the tenant scoped recycle bin
 ##Sites
 Cmdlet|Description
 :-----|:----------
@@ -190,6 +209,8 @@ Cmdlet|Description
 Cmdlet|Description
 :-----|:----------
 **[Get&#8209;PnPAccessToken](GetPnPAccessToken.md)** |Gets the OAuth 2.0 Access Token to consume the Microsoft Graph API
+**[Clear&#8209;PnPTenantRecycleBinItem](ClearPnPTenantRecycleBinItem.md)** |Permanently deletes a site collection from the tenant scoped recycle bin
+**[Restore&#8209;PnPTenantRecycleBinItem](RestorePnPTenantRecycleBinItem.md)** |Restores a site collection from the tenant scoped recycle bin
 **[Set&#8209;PnPTenantSite](SetPnPTenantSite.md)** |Office365 only: Uses the tenant API to set site information.
 **[Get&#8209;PnPTenantSite](GetPnPTenantSite.md)** |Office365 only: Uses the tenant API to retrieve site information.
 **[Remove&#8209;PnPTenantSite](RemovePnPTenantSite.md)** |Office365 only: Removes a site collection from the current tenant
@@ -199,7 +220,7 @@ Cmdlet|Description
 ##User and group management
 Cmdlet|Description
 :-----|:----------
-**[Remove&#8209;PnPGroup](RemovePnPGroup.md)** |Removes a group.
+**[Remove&#8209;PnPGroup](RemovePnPGroup.md)** |Removes a group from a web.
 **[Set&#8209;PnPGroup](SetPnPGroup.md)** |Updates a group
 **[New&#8209;PnPGroup](NewPnPGroup.md)** |Adds group to the Site Groups List and returns a group object
 **[Get&#8209;PnPGroup](GetPnPGroup.md)** |Returns a specific group or all groups.
@@ -212,12 +233,8 @@ Cmdlet|Description
 Cmdlet|Description
 :-----|:----------
 **[New&#8209;PnPPersonalSite](NewPnPPersonalSite.md)** |Office365 only: Creates a personal / OneDrive For Business site
-**[Set&#8209;PnPUserProfileProperty](SetPnPUserProfileProperty.md)** |Office365 only: Uses the tenant API to retrieve site information.
-
-You must connect to the tenant admin website (https://:<tenant>-admin.sharepoint.com) with Connect-PnPOnline in order to use this command. 
-
-**[Get&#8209;PnPUserProfileProperty](GetPnPUserProfileProperty.md)** |You must connect to the tenant admin website (https://:<tenant>-admin.sharepoint.com) with Connect-PnPOnline in order to use this cmdlet. 
-
+**[Set&#8209;PnPUserProfileProperty](SetPnPUserProfileProperty.md)** |Office365 only: Uses the tenant API to retrieve site information.  You must connect to the tenant admin website (https://:<tenant>-admin.sharepoint.com) with Connect-PnPOnline in order to use this command.  
+**[Get&#8209;PnPUserProfileProperty](GetPnPUserProfileProperty.md)** |You must connect to the tenant admin website (https://:<tenant>-admin.sharepoint.com) with Connect-PnPOnline in order to use this cmdlet.  
 ##Utilities
 Cmdlet|Description
 :-----|:----------
@@ -245,10 +262,10 @@ Cmdlet|Description
 **[Request&#8209;PnPReIndexWeb](RequestPnPReIndexWeb.md)** |Marks the web for full indexing during the next incremental crawl
 **[Get&#8209;PnPRequestAccessEmails](GetPnPRequestAccessEmails.md)** |Returns the request access e-mail addresses
 **[Set&#8209;PnPRequestAccessEmails](SetPnPRequestAccessEmails.md)** |Sets Request Access Emails on a web
-**[Get&#8209;PnPSubWebs](GetPnPSubWebs.md)** |Returns the subwebs
+**[Get&#8209;PnPSubWebs](GetPnPSubWebs.md)** |Returns the subwebs of the current web
 **[Remove&#8209;PnPWeb](RemovePnPWeb.md)** |Removes a subweb in the current web
 **[Get&#8209;PnPWeb](GetPnPWeb.md)** |Returns the current web object
-**[New&#8209;PnPWeb](NewPnPWeb.md)** |Creates a new subweb to the current web
+**[New&#8209;PnPWeb](NewPnPWeb.md)** |Creates a new subweb under the current web
 **[Set&#8209;PnPWeb](SetPnPWeb.md)** |Sets properties on a web
 **[Invoke&#8209;PnPWebAction](InvokePnPWebAction.md)** |Executes operations on web, lists and list items.
 ##Workflows
